@@ -6,6 +6,21 @@
 Welcome to MK's dev notes!
 ========================================
 
+Hi coder, glad you're here.... 🙌
+
+I'm Nithin MK, a self taught fullstack python developer.recently I came to notice that my browser bookmarks got really huge and I'm overwhelmed
+with the scattered development notes. So I thought I'll keep a record  for my thoughts, notes, experiences and mistakes here.
+
+What you can expect here 🤔..
+
+I'm working mainly with Python and some Javascript (this will change as I'm working with different projects.)
+
+Doc will be regularly updated, comments and corrections are most welcome.
+
+I'm really grateful if it's helpful to anyone who is sitting in front of a computer with a scratching head.😇
+ 
+
+
 .. toctree::
    :maxdepth: 2
    
