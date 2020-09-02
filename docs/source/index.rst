@@ -18,14 +18,15 @@ I'm working mainly with Python and some Javascript (this will change as I'm work
 Doc will be regularly updated, comments and corrections are most welcome.
 
 I'm really grateful if it's helpful to anyone who is sitting in front of a computer with a scratching head.😇
- 
 
+Contents
+********
 
 .. toctree::
    :maxdepth: 2
    
    /docker/index
-
+   /mac/index
 
 
 

@@ -62,6 +62,16 @@ which I feels really good , because the entire dev environment is isolated inclu
 orchestrate the environment for a particular project , if we have a team working on project then everyone can work on same environment and 
 that will be a productivity boost.
 
+Using git in Vscode remote containers
+*************************************
+
+How we use git in remote container, a straightforward question I had while trying the vscode remote containers for the first time.
+When I checked that in the doc I understood that remote container extension provide out of box support for local git credentials.
+
+But it was not working for me even though the local credentials are set.
+
+I resolved this problem by adding file permission to ~/.gitconfig file(added the +677)
+
 
 Setup a docker dev environment in Vscode
 ****************************************
