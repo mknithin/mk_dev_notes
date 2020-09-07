@@ -1,5 +1,5 @@
 ##################
-Version control using
+Git
 ##################
 
 Details about git VCS
