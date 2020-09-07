@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Version control using &#8212; Dev Notes 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="version-control-using">
+<h1>Version control using<a class="headerlink" href="#version-control-using" title="Permalink to this headline">¶</a></h1>
+<p>Details about git VCS</p>
+<div class="section" id="git-submodule-authentication-issue">
+<h2>Git submodule authentication issue<a class="headerlink" href="#git-submodule-authentication-issue" title="Permalink to this headline">¶</a></h2>
+<p>Git sub module is option to include a project repo inside another for various reasons.</p>
+<p>When such a repository have more than one submodules and the git username and email is not configured globally</p>
+<p>then there is a chance that you’ll come across this issue</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remote</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">Basic</span><span class="p">:</span> <span class="n">Access</span> <span class="n">denied</span>
+<span class="n">fatal</span><span class="p">:</span> <span class="n">Authentication</span> <span class="n">failed</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher.git/&#39;</span>
+<span class="n">fatal</span><span class="p">:</span> <span class="n">clone</span> <span class="n">of</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher&#39;</span> <span class="n">into</span> <span class="n">submodule</span> <span class="n">path</span> <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span> <span class="n">failed</span>
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">clone</span> <span class="s1">&#39;message_dispatcher&#39;</span><span class="o">.</span> <span class="n">Retry</span> <span class="n">scheduled</span>
+<span class="n">Username</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com&#39;</span><span class="p">:</span> <span class="n">Password</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com&#39;</span><span class="p">:</span>
+<span class="n">Cloning</span> <span class="n">into</span> <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span><span class="o">...</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">Basic</span><span class="p">:</span> <span class="n">Access</span> <span class="n">denied</span>
+<span class="n">fatal</span><span class="p">:</span> <span class="n">Authentication</span> <span class="n">failed</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher.git/&#39;</span>
+<span class="n">fatal</span><span class="p">:</span> <span class="n">clone</span> <span class="n">of</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher&#39;</span> <span class="n">into</span> <span class="n">submodule</span> <span class="n">path</span> <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span> <span class="n">failed</span>
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">clone</span> <span class="s1">&#39;message_dispatcher&#39;</span> <span class="n">a</span> <span class="n">second</span> <span class="n">time</span><span class="p">,</span> <span class="n">aborting</span>
+</pre></div>
+</div>
+<p>Solution is to configure global git username and email , just by doing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;your username&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">password</span> <span class="s2">&quot;your password&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Dev Notes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mac/index.html">Programming in Mac</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Nithin MK.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/git/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

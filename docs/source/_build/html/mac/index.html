@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming in Mac &#8212; Dev Notes 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Docker" href="../docker/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="programming-in-mac">
+<h1>Programming in Mac<a class="headerlink" href="#programming-in-mac" title="Permalink to this headline">¶</a></h1>
+<p>Apple mac book pro is my preferred machine for programming. I’m a long time linux user and switched to mac for 3-4 years now.
+I enjoyed the user interface of mac os and consistency of the machine, we programmers always require a tough machine and switching machine in between is lot of hassle.</p>
+<div class="section" id="how-to-list-listening-ports-in-mac">
+<h2>How to list listening ports in mac<a class="headerlink" href="#how-to-list-listening-ports-in-mac" title="Permalink to this headline">¶</a></h2>
+<p>When you’re developing apps that listen to port , you require a command to verify the port are really listening.
+We use <strong>netstat</strong> command for that but it’s not available in mac for default.(may be you can install it )</p>
+<p>I always use the <strong>lsof</strong> command, and this is how it works</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lsof -i -P | grep -i &quot;listen&quot;
+
+output:
+
+LogiMgrDa   449 nithinmk    8u  IPv4 0xff0ce6d23cfcf2d9      0t0  TCP *:59866 (LISTEN)
+node      12307 nithinmk   12u  IPv6 0xff0ce6d24f6b0ae9      0t0  TCP *:5556 (LISTEN)
+node      12307 nithinmk   13u  IPv6 0xff0ce6d24f6af269      0t0  TCP *:5557 (LISTEN)
+Kite      54597 nithinmk    9u  IPv4 0xff0ce6d256ad62d9      0t0  TCP localhost:46624 (LISTEN)
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Dev Notes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming in Mac</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-list-listening-ports-in-mac">How to list listening ports in mac</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../docker/index.html" title="previous chapter">Docker</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Nithin MK.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/mac/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

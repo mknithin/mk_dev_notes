@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docker &#8212; Dev Notes 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Programming in Mac" href="../mac/index.html" />
+    <link rel="prev" title="Welcome to MK’s dev notes!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="docker">
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<p>Docker is: a way to implement Linux containers!</p>
+<p>Linux containers is a way to isolate an entire operating system .</p>
+<div class="section" id="local-development-with-docker">
+<h2>Local development with docker<a class="headerlink" href="#local-development-with-docker" title="Permalink to this headline">¶</a></h2>
+<p>Developing apps in a docker container have several advantages.
+you can develope apps in same production environment and thus avoid deployment surprises.</p>
+<p>Which editor/IDE I can use for containerized development ??</p>
+<p>Most modern IDE/editors support this feature now a days , I do development python and the main players are Vscode and Pycharm</p>
+<div class="section" id="pycharm">
+<h3>Pycharm<a class="headerlink" href="#pycharm" title="Permalink to this headline">¶</a></h3>
+<p>Pycharm from Jetbrains is the feature rich and the best editor I’ve ever used for python development.
+I done almost all projects with Pycharm, so the interface feels addictive and more familiar</p>
+<p>Pycharm has an option  for  adding a remote interpreter, we can use this to create a containerized development env using
+a docker file or docker compose file.</p>
+<p>But while working with this , I found a irritated issue .</p>
+<p>When we add a new python package to the requirement file , there is no option available to rebuild the container.</p>
+<p>find issue &#64; <a class="reference external" href="https://youtrack.jetbrains.com/issue/PY-17516">https://youtrack.jetbrains.com/issue/PY-17516</a></p>
+</div>
+<div class="section" id="vscode">
+<h3>Vscode<a class="headerlink" href="#vscode" title="Permalink to this headline">¶</a></h3>
+<p>Vscode is a new payer from tech giant microsoft , and it’s well supported and open source.
+Vscode is actually a text editor which can be transformed to a well equipped IDE with it’s vast list of plugins.</p>
+<p>I used vscode for my scripting projects but not for big web projects. the autocompletion and django features available in pycharm not allowed
+me to do that .</p>
+<p>Other than explicit framework support for python, most of the feature are available in vscode.</p>
+<p>and microsoft as build a really good python extension for language support
+(I think they recreated the language server recently and named like Pylance, which is available as  a extension for now.)</p>
+<p>So back to the topic docker,</p>
+<p>we have 2 options available in vscode to develope apps with docker</p>
+<ol class="arabic simple">
+<li><p>debug containerized apps by attaching to the container at launch configuration</p></li>
+<li><p>develope inside a container using remote container extension.</p></li>
+</ol>
+<p>I tried the first option several times , but it lacks the language specific feature like intellisens and code completion.</p>
+<p>I’m using the second option, ie using remote container extension.
+which I feels really good , because the entire dev environment is isolated including the extensions, which will give an options to completely
+orchestrate the environment for a particular project , if we have a team working on project then everyone can work on same environment and
+that will be a productivity boost.</p>
+</div>
+</div>
+<div class="section" id="using-git-in-vscode-remote-containers">
+<h2>Using git in Vscode remote containers<a class="headerlink" href="#using-git-in-vscode-remote-containers" title="Permalink to this headline">¶</a></h2>
+<p>How we use git in remote container, a straightforward question I had while trying the vscode remote containers for the first time.
+When I checked that in the doc I understood that remote container extension provide out of box support for local git credentials.</p>
+<p>But it was not working for me even though the local credentials are set.</p>
+<p>I resolved this problem by adding file permission to ~/.gitconfig file(added the +677)</p>
+</div>
+<div class="section" id="docker-no-space-left-error">
+<h2>Docker no space left error<a class="headerlink" href="#docker-no-space-left-error" title="Permalink to this headline">¶</a></h2>
+<p>I got this error firstly when I try to install postgre db from a docker compose file.</p>
+<p>This is the complete error text</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fixing</span> <span class="n">permissions</span> <span class="n">on</span> <span class="n">existing</span> <span class="n">directory</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">data</span> <span class="o">...</span> <span class="n">ok</span>
+<span class="n">initdb</span><span class="p">:</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">create</span> <span class="n">directory</span> <span class="s2">&quot;/var/lib/postgresql/data/pg_wal&quot;</span><span class="p">:</span> <span class="n">No</span> <span class="n">space</span> <span class="n">left</span> <span class="n">on</span> <span class="n">device</span>
+<span class="n">initdb</span><span class="p">:</span> <span class="n">removing</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">data</span> <span class="n">directory</span> <span class="s2">&quot;/var/lib/postgresql/data&quot;</span>
+</pre></div>
+</div>
+<p>The solution is to delete the unused images and stope images .</p>
+<p>I followed this page</p>
+<blockquote>
+<div><p><a class="reference external" href="https://www.peterbe.com/plog/no-space-left-on-device-on-osx-docker">https://www.peterbe.com/plog/no-space-left-on-device-on-osx-docker</a></p>
+</div></blockquote>
+<p>and this is the command used here to do that</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">container</span> <span class="n">prune</span>
+<span class="n">docker</span> <span class="n">image</span> <span class="n">prune</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-a-docker-dev-environment-in-vscode">
+<h2>Setup a docker dev environment in Vscode<a class="headerlink" href="#setup-a-docker-dev-environment-in-vscode" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Dev Notes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#local-development-with-docker">Local development with docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-git-in-vscode-remote-containers">Using git in Vscode remote containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-no-space-left-error">Docker no space left error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-a-docker-dev-environment-in-vscode">Setup a docker dev environment in Vscode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mac/index.html">Programming in Mac</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to MK’s dev notes!</a></li>
+      <li>Next: <a href="../mac/index.html" title="next chapter">Programming in Mac</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Nithin MK.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/docker/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
