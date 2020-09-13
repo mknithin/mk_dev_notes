@@ -344,3 +344,7 @@ d7backend/media/
 /.idea/runConfigurations/runserver_plus.xml
 /.idea/vcs.xml
 /.idea/webResources.xml
+/.idea/mk_dev_notes.iml
+docs/source/_build/html/_sources/git/index.rst.txt
+.idea/mk_dev_notes.iml
+docs/source/_build/html/_sources/git/index.rst.txt
