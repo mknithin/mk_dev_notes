@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Alchemy &#8212; Dev Notes 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sql-alchemy">
+<h1>SQL Alchemy<a class="headerlink" href="#sql-alchemy" title="Permalink to this headline">¶</a></h1>
+<p>The function of a ORM(object relational mapper) is associating user defined python  classes with database tables.
+And the SQL Alchemy is doing the exact same thing here.</p>
+<p>So here a instance of  python classes (objects) represent rows in their corresponding tables.</p>
+<p>SQL Alchemy ORM, is build on top of the Expression Language.which is the general way to interact with the DB in SQL Alchemy.</p>
+<div class="section" id="fundamentals">
+<h2>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A collection of Table objects and their associated child objects is referred to as <strong>database metadata</strong></p></li>
+</ul>
+</div>
+<div class="section" id="connecting-to-db">
+<h2>Connecting to DB<a class="headerlink" href="#connecting-to-db" title="Permalink to this headline">¶</a></h2>
+<p>To create connection ,we need to create a instance of Alchemy Engine class and it represents the core interface to the database, adapted through a <strong>dialect</strong> (consider it as a db driver) that handles the details of the database and DBAPI in use.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://nithinmk:@localhost/alembic_trial&#39;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Engine establishes the DBAPI connection when we call method  like <strong>Engine.execute()</strong> or <strong>Engine.connect()</strong>
+When using the ORM, we typically don’t use the Engine directly once created; instead, it’s used behind the scenes by the ORM.</p>
+</div>
+<div class="section" id="declare-a-mapping">
+<h2>Declare a Mapping<a class="headerlink" href="#declare-a-mapping" title="Permalink to this headline">¶</a></h2>
+<p>When using the ORM, the configurational process starts by describing the database tables we’ll be dealing with, and then by defining our own classes which will be mapped to those tables.
+In modern SQLAlchemy, these two tasks are usually performed together, using a system known as <strong>Declarative</strong> , which allows us to create classes that include directives to describe the actual database table they will be mapped to.</p>
+<p>Classes mapped using the Declarative system are defined in terms of a base class which maintains a catalog of classes and tables relative to that base - this is known as the declarative base class.
+Our application will usually have just one instance of this base in a commonly imported module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now that we have a “base”, we can define any number of mapped classes using this base class.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Dev Notes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mac/index.html">Programming in Mac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../git/index.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../microservice_architecture/index.html">Microservice Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../oauth2/index.html">OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alembic/index.html">Alembic</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Nithin MK.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/database/orm/sql_alchemy/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -44,6 +44,53 @@
 <li><p>Error Lens : <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens">https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens</a></p></li>
 </ol>
 </div>
+<div class="section" id="unresolved-import-warnings">
+<h2>Unresolved import warnings<a class="headerlink" href="#unresolved-import-warnings" title="Permalink to this headline">¶</a></h2>
+<p>If you’re getting a warning about an unresolved import, first ensure that the
+package is installed into your environment if it is a library (<cite>pip</cite>, <cite>pipenv</cite>, etc).
+If the warning is about importing your own code (and not a library), continue reading.</p>
+<p>The language server treats the workspace root (i.e. folder you have opened) as
+the main root of user module imports. This means that if your imports are not relative
+to this path, the language server will not be able to find them. This is common
+for users who have a <cite>src</cite> directory which contains their code, a directory for
+an installable package, etc. Note that the <cite>src</cite> scenario is automatically detected
+by the language server, so no configuration is necessary in that particular case.</p>
+<p>These extra roots must be specified to the language server. The easiest way to
+do this (with the VS Code Python extension) is to create a workspace configuration
+which sets <cite>python.analysis.extraPaths</cite>. For example, if a project uses a
+<cite>sources</cite> directory, then create a file <cite>.vscode/settings.json</cite> in the workspace
+with the contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+
+    <span class="s2">&quot;python.analysis.extraPaths&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;./sources&quot;</span><span class="p">]</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This list can be extended to other paths within the workspace (or even with
+code outside the workspace in more complicated setups). Relative paths will
+be taken as relative to the workspace root.</p>
+<p>Note that if you are coming to Pylance from using the Microsoft Python Language Server, this setting has changed from <cite>python.autoComplete.extraPaths</cite> to <cite>python.analysis.extraPaths</cite>.</p>
+</div>
+<div class="section" id="to-use-custom-modules-in-interactive-python-window">
+<h2>To use custom modules in interactive python window<a class="headerlink" href="#to-use-custom-modules-in-interactive-python-window" title="Permalink to this headline">¶</a></h2>
+<p>Say when arrange all your custom source code inside a directory call app. and your are trying to access the modules(of course, the python files)from  Python interactive window(Jupyter notebook)</p>
+<p>Most probably you’ll get a ModuleNotFound Error</p>
+<p>When I came across this, I tried many solutions like;</p>
+<ul class="simple">
+<li><p>Adding PYTHONPATH={absolute_path_to_app_dir} in .env file in Work Directory</p></li>
+<li><p>Adding PYTHONPATH={absolute_path_to_app_dir} in <strong>terminal.integrated.env.osx</strong> settings</p></li>
+</ul>
+<p>But nothing worked , and the solution that worked is;</p>
+<p>changing</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;python.dataScience.notebookFileRoot&quot;</span><span class="o">:</span> <span class="s2">&quot;${fileDirname}&quot;</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;python.dataScience.notebookFileRoot&quot;</span><span class="o">:</span> <span class="s2">&quot;${workspaceFolder}&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -68,6 +115,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../mac/index.html">Programming in Mac</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../microservice_architecture/index.html">Microservice Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oauth2/index.html">OAuth2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/orm/sql_alchemy/alembic/index.html">Alembic</a></li>
 </ul>
 
 <div class="relations">

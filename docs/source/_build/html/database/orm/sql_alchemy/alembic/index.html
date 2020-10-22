@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alembic &#8212; Dev Notes 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="alembic">
+<h1>Alembic<a class="headerlink" href="#alembic" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="database-migration-using-alembic">
+<h2>Database migration using alembic<a class="headerlink" href="#database-migration-using-alembic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="used-for">
+<h3>used for?<a class="headerlink" href="#used-for" title="Permalink to this headline">¶</a></h3>
+<p>Alembic provides for the creation, management, and invocation of change management scripts for a relational database, using SQLAlchemy as the underlying engine.</p>
+</div>
+<div class="section" id="how-to-use">
+<h3>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h3>
+<p>Usage of Alembic starts with creation of the Migration Environment. This is a directory of scripts that is specific to a particular application. The migration environment is created just once, and is then maintained along with the application’s source code itself. The environment is created using the init command of Alembic, and is then customizable to suit the specific needs of the application.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>alembic init alembic
+</pre></div>
+</div>
+<p>This will generate something like ;</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>yourproject/
+ alembic/
+     env.py
+     README
+     script.py.mako
+     versions/
+         3512b954651e_add_account.py
+         2b1ae634e5cd_add_order_id.py
+         3adcc9a56557_rename_username_field.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="alembic-ini">
+<h3>alembic.ini<a class="headerlink" href="#alembic-ini" title="Permalink to this headline">¶</a></h3>
+<p>Alembic placed a file alembic.ini into the current directory. This is a file that the alembic script looks for when invoked. This file can be anywhere, either in the same directory from which the alembic script will normally be invoked, or if in a different directory, can be specified by using the –config option to the alembic runner.</p>
+</div>
+<div class="section" id="create-a-migration-script">
+<h3>Create a Migration Script<a class="headerlink" href="#create-a-migration-script" title="Permalink to this headline">¶</a></h3>
+<p>With the environment in place we can create a new revision, using alembic revision:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ alembic revision -m <span class="s2">&quot;create account table&quot;</span>
+Generating /path/to/yourproject/alembic/versions/1975ea83b712_create_accoun
+t_table.py...done
+</pre></div>
+</div>
+</div>
+<div class="section" id="auto-generating-migrations">
+<h3>Auto Generating Migrations<a class="headerlink" href="#auto-generating-migrations" title="Permalink to this headline">¶</a></h3>
+<p>Alembic can view the status of the database and compare against the table metadata in the application, generating the “obvious” migrations based on a comparison. This is achieved using the –autogenerate option to the alembic revision command, which places so-called candidate migrations into our new migrations file. We review and modify these by hand as needed, then proceed normally.</p>
+<p>To use autogenerate, we first need to modify our env.py so that it gets access to a table metadata object that contains the target. Suppose our application has a declarative base in myapp.mymodel. This base contains a MetaData object which contains Table objects defining our database. We make sure this is loaded in env.py and then passed to EnvironmentContext.configure() via the target_metadata argument. The env.py sample script used in the generic template already has a variable declaration near the top for our convenience, where we replace None with our MetaData. Starting with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># add your model&#39;s MetaData object here</span>
+<span class="c1"># for &#39;autogenerate&#39; support</span>
+<span class="c1"># from myapp import mymodel</span>
+<span class="c1"># target_metadata = mymodel.Base.metadata</span>
+<span class="nv">target_metadata</span> <span class="o">=</span> None
+</pre></div>
+</div>
+<p>we change to:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from myapp.mymodel import Base
+<span class="nv">target_metadata</span> <span class="o">=</span> Base.metadata
+</pre></div>
+</div>
+<p>Note: The best approach is to import all the model classes to the base file location, thus this module have all the models available before imported by alembic. Otherwise there is chance for alembic generate a empty migration file.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">Dev Notes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mac/index.html">Programming in Mac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../git/index.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../microservice_architecture/index.html">Microservice Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../oauth2/index.html">OAuth2</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Nithin MK.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../../_sources/database/orm/sql_alchemy/alembic/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
