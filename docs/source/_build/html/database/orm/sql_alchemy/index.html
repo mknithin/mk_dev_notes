@@ -42,28 +42,85 @@ And the SQL Alchemy is doing the exact same thing here.</p>
 <ul class="simple">
 <li><p>A collection of Table objects and their associated child objects is referred to as <strong>database metadata</strong></p></li>
 </ul>
-</div>
 <div class="section" id="connecting-to-db">
-<h2>Connecting to DB<a class="headerlink" href="#connecting-to-db" title="Permalink to this headline">¶</a></h2>
+<h3>Connecting to DB<a class="headerlink" href="#connecting-to-db" title="Permalink to this headline">¶</a></h3>
 <p>To create connection ,we need to create a instance of Alchemy Engine class and it represents the core interface to the database, adapted through a <strong>dialect</strong> (consider it as a db driver) that handles the details of the database and DBAPI in use.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://nithinmk:@localhost/alembic_trial&#39;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://nithinmk:@localhost/alembic_trial&#39;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The Engine establishes the DBAPI connection when we call method  like <strong>Engine.execute()</strong> or <strong>Engine.connect()</strong>
 When using the ORM, we typically don’t use the Engine directly once created; instead, it’s used behind the scenes by the ORM.</p>
 </div>
 <div class="section" id="declare-a-mapping">
-<h2>Declare a Mapping<a class="headerlink" href="#declare-a-mapping" title="Permalink to this headline">¶</a></h2>
+<h3>Declare a Mapping<a class="headerlink" href="#declare-a-mapping" title="Permalink to this headline">¶</a></h3>
 <p>When using the ORM, the configurational process starts by describing the database tables we’ll be dealing with, and then by defining our own classes which will be mapped to those tables.
 In modern SQLAlchemy, these two tasks are usually performed together, using a system known as <strong>Declarative</strong> , which allows us to create classes that include directives to describe the actual database table they will be mapped to.</p>
 <p>Classes mapped using the Declarative system are defined in terms of a base class which maintains a catalog of classes and tables relative to that base - this is known as the declarative base class.
 Our application will usually have just one instance of this base in a commonly imported module.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
-<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Now that we have a “base”, we can define any number of mapped classes using this base class.</p>
+</div>
+<div class="section" id="create-a-schema">
+<h3>Create a Schema<a class="headerlink" href="#create-a-schema" title="Permalink to this headline">¶</a></h3>
+<p>SQL ALchemy represents information for a specific table using <strong>Table</strong> , and the declarative system will automatically construct this(Table metadata) for us.</p>
+<p>The Table object is a member of a larger collection known as <strong>MetaData</strong>. When using Declarative, this object is available using the .metadata attribute of our declarative base class.</p>
+<p>The MetaData is a registry which includes the ability to emit a limited set of schema generation commands to the database.</p>
+<p>we can use MetaData to issue CREATE TABLE statements to the database for all tables that don’t yet exist.
+we call the <strong>MetaData.create_all()</strong> method, passing in our Engine as a source of database connectivity.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Base.metadata.create_all<span class="o">(</span>engine<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-a-session">
+<h3>Creating a Session<a class="headerlink" href="#creating-a-session" title="Permalink to this headline">¶</a></h3>
+<p>The ORM’s “handle” to the database is the <strong>Session</strong>.
+When we first set up the application, at the same level as our create_engine() statement, we define a Session class which will serve as a factory for new Session objects.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By creating a session object won’t open a any new connection to DB, When it’s first used, it retrieves a connection from a pool of connections maintained by the Engine, and holds onto it until we commit all changes and/or close the session object.</p>
+</div>
+<div class="section" id="adding-and-updating-objects">
+<h3>Adding and Updating Objects<a class="headerlink" href="#adding-and-updating-objects" title="Permalink to this headline">¶</a></h3>
+<p>To persist our User object, we Session.add() it to our Session</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ed_user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ed&#39;</span><span class="p">,</span> <span class="n">fullname</span><span class="o">=</span><span class="s1">&#39;Ed Jones&#39;</span><span class="p">,</span> <span class="n">nickname</span><span class="o">=</span><span class="s1">&#39;edsnickname&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ed_user</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>At this point, we say that the instance is pending; no SQL has yet been issued and the object is not yet represented by a row in the database.
+The Session will issue the SQL to persist Ed Jones as soon as is needed, using a process known as a <strong>flush</strong>.</p>
+<p>For example, below we create a new Query object which loads instances of User.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">our_user</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here In fact, the Session has identified that the row returned is the same row as one already represented within its internal map of objects.</p>
+<p>The ORM concept at work here is known as an identity map and ensures that all operations upon a particular row within a Session operate upon the same set of data.</p>
+<p>We can add more User objects at once using add_all()</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">add_all</span><span class="p">([</span>
+<span class="go">    User(name=&#39;wendy&#39;, fullname=&#39;Wendy Williams&#39;, nickname=&#39;windy&#39;),</span>
+<span class="go">    User(name=&#39;mary&#39;, fullname=&#39;Mary Contrary&#39;, nickname=&#39;mary&#39;),</span>
+<span class="go">    User(name=&#39;fred&#39;, fullname=&#39;Fred Flintstone&#39;, nickname=&#39;freddy&#39;)])</span>
+</pre></div>
+</div>
+<p>we’ve decided Ed’s nickname isn’t that great, so lets change it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ed_user</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="s1">&#39;eddie&#39;</span>
+</pre></div>
+</div>
+<p>Here the Session is paying attention. It knows, for example, that Ed Jones has been modified:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">dirty</span>
+<span class="go">IdentitySet([&lt;User(name=&#39;ed&#39;, fullname=&#39;Ed Jones&#39;, nickname=&#39;eddie&#39;)&gt;])</span>
+</pre></div>
+</div>
+<p>Now  to issue all remaining changes to the database and commit the transaction, which has been in progress throughout. We do this via <strong>Session.commit()</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -87,6 +144,7 @@ Our application will usually have just one instance of this base in a commonly i
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../docker/index.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mac/index.html">Programming in Mac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vscode/index.html">vscode editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../microservice_architecture/index.html">Microservice Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../oauth2/index.html">OAuth2</a></li>

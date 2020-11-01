@@ -13,6 +13,8 @@ Preferred Vscode extension for python development
 #. Python Docstring Generator : https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring
 #. Code bookmarks : https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks
 #. Error Lens : https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens
+#. Partial Diff : https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff
+
 
 
 Unresolved import warnings

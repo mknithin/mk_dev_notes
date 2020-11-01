@@ -1,9 +1,28 @@
-As we all know the special circumstances  we are going through due to covid-19, I would like to request for some discount for the rent I'm paying.
+############
+Fundamentals
+############
+
+Datatypes
+#########
+
+In js Datatype can be 
+
+* Object
+* Primitive types like (number, string etc)
+
+**Number** : in js it's represents both decimal and floating point numbers.
 
 
+Variable declarations
+*********************
 
-Added to 
+**let** : used in most declarations, the value assigned here is mutable
+**const** : declare constants , which means value assigned is immutable.
 
-opt/jasmin-scripts/interception/Qatar_Javna.txt
-opt/jasmin-scripts/interception/Qatar_sources.txt
+Note : when using const we always need a initial value eg : "const state"
+will give you a exception : VM655:1 Uncaught SyntaxError: Missing initializer in const declaration
 
+Operator precedence
+*******************
+
+`https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence`_

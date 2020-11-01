@@ -36,7 +36,7 @@ find issue @ https://youtrack.jetbrains.com/issue/PY-17516
 Vscode
 ======
 
-Vscode is a new payer from tech giant microsoft , and it's well supported and open source.
+Vscode is a new player  from tech giant microsoft , and it's well supported and open source.
 Vscode is actually a text editor which can be transformed to a well equipped IDE with it's vast list of plugins.
 
 I used vscode for my scripting projects but not for big web projects. the autocompletion and django features available in pycharm not allowed
