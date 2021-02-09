@@ -15,7 +15,7 @@ We use **netstat** command for that but it's not available in mac for default.(m
 
 I always use the **lsof** command, and this is how it works
 
-.. code-block::
+.. code-block:: shell
 
     $ lsof -i -P | grep -i "listen"
 
@@ -33,12 +33,12 @@ How to see the processor core usage
 To get all details regarding the processor core usage and other processing details, 
 please use the below command 
 
-.. code-block::
+.. code-block:: shell
 
     $ htop
 
 this utility is not pre installed in mac, so you need to install that using
 
-.. code-block::
+.. code-block:: shell
 
     $ brew install htop
