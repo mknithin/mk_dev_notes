@@ -52,7 +52,7 @@ Now that we have a “base”, we can define any number of mapped classes using 
 Create a Schema
 ###############
 
-SQL ALchemy represents information for a specific table using **Table** , and the declarative system will automatically construct this(Table metadata) for us.
+SQL ALchemy represents information for a specific table using **Table** object, and the declarative system will automatically construct this(Table metadata) for us.
 
 The Table object is a member of a larger collection known as **MetaData**. When using Declarative, this object is available using the .metadata attribute of our declarative base class.
 
@@ -87,7 +87,7 @@ To persist our User object, we Session.add() it to our Session
 
 .. code-block:: python
 
-    >>> ed_user = User(name='ed', fullname='Ed Jo`nes', nickname='edsnickname')
+    >>> ed_user = User(name='ed', fullname='Ed Jones', nickname='edsnickname')
     >>> session.add(ed_user)
 
 At this point, we say that the instance is pending; no SQL has yet been issued and the object is not yet represented by a row in the database. 
@@ -132,3 +132,8 @@ Now  to issue all remaining changes to the database and commit the transaction, 
 .. code-block:: python
     
     >>> session.commit()
+
+
+Reference
+*********
+* `SQL Alchemy ORM doc <https://docs.sqlalchemy.org/en/13/orm/tutorial.html>`_

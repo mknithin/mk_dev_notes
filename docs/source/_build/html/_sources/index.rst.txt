@@ -31,6 +31,7 @@ Contents
    /git/index
    /microservice_architecture/index
    /oauth2/index
+   /database/orm/sql_alchemy/index.rst
    /database/orm/sql_alchemy/alembic/index.rst
 
 

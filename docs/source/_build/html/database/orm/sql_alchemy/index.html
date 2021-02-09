@@ -15,6 +15,8 @@
     <script src="../../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Alembic" href="alembic/index.html" />
+    <link rel="prev" title="OAuth2" href="../../../oauth2/index.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
@@ -66,7 +68,7 @@ Our application will usually have just one instance of this base in a commonly i
 </div>
 <div class="section" id="create-a-schema">
 <h3>Create a Schema<a class="headerlink" href="#create-a-schema" title="Permalink to this headline">¶</a></h3>
-<p>SQL ALchemy represents information for a specific table using <strong>Table</strong> , and the declarative system will automatically construct this(Table metadata) for us.</p>
+<p>SQL ALchemy represents information for a specific table using <strong>Table</strong> object, and the declarative system will automatically construct this(Table metadata) for us.</p>
 <p>The Table object is a member of a larger collection known as <strong>MetaData</strong>. When using Declarative, this object is available using the .metadata attribute of our declarative base class.</p>
 <p>The MetaData is a registry which includes the ability to emit a limited set of schema generation commands to the database.</p>
 <p>we can use MetaData to issue CREATE TABLE statements to the database for all tables that don’t yet exist.
@@ -122,6 +124,12 @@ The Session will issue the SQL to persist Ed Jones as soon as is needed, using a
 </div>
 </div>
 </div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/13/orm/tutorial.html">SQL Alchemy ORM doc</a></p></li>
+</ul>
+</div>
 </div>
 
 
@@ -141,13 +149,18 @@ The Session will issue the SQL to persist Ed Jones as soon as is needed, using a
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../docker/index.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mac/index.html">Programming in Mac</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../vscode/index.html">vscode editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../microservice_architecture/index.html">Microservice Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../oauth2/index.html">OAuth2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SQL Alchemy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fundamentals">Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="alembic/index.html">Alembic</a></li>
 </ul>
 
@@ -155,6 +168,8 @@ The Session will issue the SQL to persist Ed Jones as soon as is needed, using a
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../../../oauth2/index.html" title="previous chapter">OAuth2</a></li>
+      <li>Next: <a href="alembic/index.html" title="next chapter">Alembic</a></li>
   </ul></li>
 </ul>
 </div>

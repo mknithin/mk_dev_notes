@@ -25,3 +25,20 @@ I always use the **lsof** command, and this is how it works
     node      12307 nithinmk   12u  IPv6 0xff0ce6d24f6b0ae9      0t0  TCP *:5556 (LISTEN)
     node      12307 nithinmk   13u  IPv6 0xff0ce6d24f6af269      0t0  TCP *:5557 (LISTEN)
     Kite      54597 nithinmk    9u  IPv4 0xff0ce6d256ad62d9      0t0  TCP localhost:46624 (LISTEN)
+
+
+How to see the processor core usage  
+***********************************
+
+To get all details regarding the processor core usage and other processing details, 
+please use the below command 
+
+.. code-block::
+
+    $ htop
+
+** you need to install this utility in mac , using
+
+.. code-block::
+
+    $ brew install htop

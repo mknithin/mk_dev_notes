@@ -80,3 +80,21 @@ to
 .. code-block:: javascript 
 
     "python.dataScience.notebookFileRoot": "${workspaceFolder}"
+
+
+To add local module path to PYTHONPATH in vscode
+************************************************
+
+That setting PYTHONPATH to include a src directory with terminal.integrated.env.* (see below) also affects (a) test discovery, and (b) interactive debugging in VS Code.
+
+.. code-block::
+
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/src:${env:PYTHONPATH}"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}/src:${env:PYTHONPATH}"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/src;${env:PYTHONPATH}"
+    },

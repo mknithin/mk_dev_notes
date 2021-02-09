@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fundamentals &#8212; Dev Notes 0.0.1 documentation</title>
+    <title>Python language basics &#8212; Dev Notes 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -31,29 +31,26 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="fundamentals">
-<h1>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="datatypes">
-<h2>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h2>
-<p>In js Datatype can be</p>
-<ul class="simple">
-<li><p>Object</p></li>
-<li><p>Primitive types like (number, string etc)</p></li>
-</ul>
-<p><strong>Number</strong> : in js it’s represents both decimal and floating point numbers.</p>
-<div class="section" id="variable-declarations">
-<h3>Variable declarations<a class="headerlink" href="#variable-declarations" title="Permalink to this headline">¶</a></h3>
-<p><strong>let</strong> : used in most declarations, the value assigned here is mutable
-<strong>const</strong> : declare constants , which means value assigned is immutable.</p>
-<p>Note : when using const we always need a initial value eg : “const state”
-will give you a exception : VM655:1 Uncaught SyntaxError: Missing initializer in const declaration</p>
+  <div class="section" id="python-language-basics">
+<h1>Python language basics<a class="headerlink" href="#python-language-basics" title="Permalink to this headline">¶</a></h1>
+<p>Apple mac book pro is my preferred machine for programming. I’m a long time linux user and switched to mac for 3-4 years now.
+I enjoyed the user interface of mac os and consistency of the machine, we programmers always require a tough machine and switching machine in between is lot of hassle.</p>
+<div class="section" id="what-is-the-use-of-in-python-function-definition">
+<h2>what is the use of * in python function definition<a class="headerlink" href="#what-is-the-use-of-in-python-function-definition" title="Permalink to this headline">¶</a></h2>
+<p>In python 3 you can specify * barely to force parameters after that as keyword only arguments</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;def fn(arg1, arg2, *, kwarg1, kwarg2):
+...     print(arg1, arg2, kwarg1, kwarg2)
+...
+&gt;&gt;&gt; fn(1, 2, 3, 4)
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: fn() takes 2 positional arguments but 4 were given
+&gt;&gt;&gt; fn(1, 2, kwarg1=3, kwarg2=4)
+1 2 3 4
+&gt;&gt;&gt;
+</pre></div>
 </div>
-<div class="section" id="operator-precedence">
-<h3>Operator precedence<a class="headerlink" href="#operator-precedence" title="Permalink to this headline">¶</a></h3>
-<p>Refer below doc for js Operator preference which used determine order of execution for Operators.</p>
-<p>Higher precedence will executed first.</p>
-<p><a href="#id1"><span class="problematic" id="id2">`https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence`_</span></a></p>
-</div>
+<p>ref: <a class="reference external" href="https://stackoverflow.com/questions/36467057/what-is-the-use-of-in-python-function-definition">stackoverflow</a></p>
 </div>
 </div>
 
@@ -122,7 +119,7 @@ will give you a exception : VM655:1 Uncaught SyntaxError: Missing initializer in
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/javascript/fundamentals/index.rst.txt"
+      <a href="../../_sources/python/basic/index.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

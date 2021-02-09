@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Programming in Mac &#8212; Dev Notes 0.0.1 documentation</title>
+    <title>&lt;no title&gt; &#8212; Dev Notes 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,8 +15,6 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="vscode editor" href="../vscode/index.html" />
-    <link rel="prev" title="Docker" href="../docker/index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -33,40 +31,7 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="programming-in-mac">
-<h1>Programming in Mac<a class="headerlink" href="#programming-in-mac" title="Permalink to this headline">¶</a></h1>
-<p>Apple mac book pro is my preferred machine for programming. I’m a long time linux user and switched to mac for 3-4 years now.
-I enjoyed the user interface of mac os and consistency of the machine, we programmers always require a tough machine and switching machine in between is lot of hassle.</p>
-<div class="section" id="how-to-list-listening-ports-in-mac">
-<h2>How to list listening ports in mac<a class="headerlink" href="#how-to-list-listening-ports-in-mac" title="Permalink to this headline">¶</a></h2>
-<p>When you’re developing apps that listen to port , you require a command to verify the port are really listening.
-We use <strong>netstat</strong> command for that but it’s not available in mac for default.(may be you can install it )</p>
-<p>I always use the <strong>lsof</strong> command, and this is how it works</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lsof -i -P | grep -i &quot;listen&quot;
-
-output:
-
-LogiMgrDa   449 nithinmk    8u  IPv4 0xff0ce6d23cfcf2d9      0t0  TCP *:59866 (LISTEN)
-node      12307 nithinmk   12u  IPv6 0xff0ce6d24f6b0ae9      0t0  TCP *:5556 (LISTEN)
-node      12307 nithinmk   13u  IPv6 0xff0ce6d24f6af269      0t0  TCP *:5557 (LISTEN)
-Kite      54597 nithinmk    9u  IPv4 0xff0ce6d256ad62d9      0t0  TCP localhost:46624 (LISTEN)
-</pre></div>
-</div>
-</div>
-<div class="section" id="how-to-see-the-processor-core-usage">
-<h2>How to see the processor core usage<a class="headerlink" href="#how-to-see-the-processor-core-usage" title="Permalink to this headline">¶</a></h2>
-<p>To get all details regarding the processor core usage and other processing details,
-please use the below command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ htop
-</pre></div>
-</div>
-<p>** you need to install this utility in mac , using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ brew install htop
-</pre></div>
-</div>
-</div>
-</div>
-
+  
 
           </div>
           
@@ -84,13 +49,9 @@ please use the below command</p>
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming in Mac</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-list-listening-ports-in-mac">How to list listening ports in mac</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-see-the-processor-core-usage">How to see the processor core usage</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../mac/index.html">Programming in Mac</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vscode/index.html">vscode editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../microservice_architecture/index.html">Microservice Architecture</a></li>
@@ -103,8 +64,6 @@ please use the below command</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../docker/index.html" title="previous chapter">Docker</a></li>
-      <li>Next: <a href="../vscode/index.html" title="next chapter">vscode editor</a></li>
   </ul></li>
 </ul>
 </div>
@@ -138,7 +97,7 @@ please use the below command</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/mac/index.rst.txt"
+      <a href="../_sources/python/index.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
