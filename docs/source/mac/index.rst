@@ -37,7 +37,7 @@ please use the below command
 
     $ htop
 
-** you need to install this utility in mac , using
+this utility is not pre installed in mac, so you need to install that using
 
 .. code-block::
 
