@@ -2,8 +2,10 @@
 Programming in Mac
 ##################
 
-Apple mac book pro is my preferred machine for programming. I'm a long time linux user and switched to mac for 3-4 years now.
-I enjoyed the user interface of mac os and consistency of the machine, we programmers always require a tough machine and switching machine in between is lot of hassle.
+Apple mac book pro is my preferred machine for programming.
+I'm a long time linux user and switched to mac for 3-4 years now.
+I enjoyed the user interface of mac os and consistency of the machine,
+we programmers always require a tough machine and switching machine in between is lot of hassle.
 
 
 

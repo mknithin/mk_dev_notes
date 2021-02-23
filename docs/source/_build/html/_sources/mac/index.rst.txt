@@ -2,8 +2,10 @@
 Programming in Mac
 ##################
 
-Apple mac book pro is my preferred machine for programming. I'm a long time linux user and switched to mac for 3-4 years now.
-I enjoyed the user interface of mac os and consistency of the machine, we programmers always require a tough machine and switching machine in between is lot of hassle.
+Apple mac book pro is my preferred machine for programming.
+I'm a long time linux user and switched to mac for 3-4 years now.
+I enjoyed the user interface of mac os and consistency of the machine,
+we programmers always require a tough machine and switching machine in between is lot of hassle.
 
 
 
@@ -15,7 +17,7 @@ We use **netstat** command for that but it's not available in mac for default.(m
 
 I always use the **lsof** command, and this is how it works
 
-.. code-block::
+.. code-block:: shell
 
     $ lsof -i -P | grep -i "listen"
 
@@ -33,12 +35,12 @@ How to see the processor core usage
 To get all details regarding the processor core usage and other processing details, 
 please use the below command 
 
-.. code-block::
+.. code-block:: shell
 
     $ htop
 
-** you need to install this utility in mac , using
+this utility is not pre installed in mac, so you need to install that using
 
-.. code-block::
+.. code-block:: shell
 
     $ brew install htop

@@ -100,6 +100,16 @@ and this is the command used here to do that
     docker image prune
 
 
-Setup a docker dev environment in Vscode
+To refer source host in docker container
 ****************************************
+
+when you want to refer the source host(your laptop or the server you're running the docker), from a  docker container
+use the host name
+
+.. code-block::
+
+    host.docker.internal
+
+
+
 

@@ -35,21 +35,23 @@
             
   <div class="section" id="programming-in-mac">
 <h1>Programming in Mac<a class="headerlink" href="#programming-in-mac" title="Permalink to this headline">¶</a></h1>
-<p>Apple mac book pro is my preferred machine for programming. I’m a long time linux user and switched to mac for 3-4 years now.
-I enjoyed the user interface of mac os and consistency of the machine, we programmers always require a tough machine and switching machine in between is lot of hassle.</p>
+<p>Apple mac book pro is my preferred machine for programming.
+I’m a long time linux user and switched to mac for 3-4 years now.
+I enjoyed the user interface of mac os and consistency of the machine,
+we programmers always require a tough machine and switching machine in between is lot of hassle.</p>
 <div class="section" id="how-to-list-listening-ports-in-mac">
 <h2>How to list listening ports in mac<a class="headerlink" href="#how-to-list-listening-ports-in-mac" title="Permalink to this headline">¶</a></h2>
 <p>When you’re developing apps that listen to port , you require a command to verify the port are really listening.
 We use <strong>netstat</strong> command for that but it’s not available in mac for default.(may be you can install it )</p>
 <p>I always use the <strong>lsof</strong> command, and this is how it works</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lsof -i -P | grep -i &quot;listen&quot;
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ lsof -i -P <span class="p">|</span> grep -i <span class="s2">&quot;listen&quot;</span>
 
 output:
 
-LogiMgrDa   449 nithinmk    8u  IPv4 0xff0ce6d23cfcf2d9      0t0  TCP *:59866 (LISTEN)
-node      12307 nithinmk   12u  IPv6 0xff0ce6d24f6b0ae9      0t0  TCP *:5556 (LISTEN)
-node      12307 nithinmk   13u  IPv6 0xff0ce6d24f6af269      0t0  TCP *:5557 (LISTEN)
-Kite      54597 nithinmk    9u  IPv4 0xff0ce6d256ad62d9      0t0  TCP localhost:46624 (LISTEN)
+LogiMgrDa   <span class="m">449</span> nithinmk    8u  IPv4 0xff0ce6d23cfcf2d9      0t0  TCP *:59866 <span class="o">(</span>LISTEN<span class="o">)</span>
+node      <span class="m">12307</span> nithinmk   12u  IPv6 0xff0ce6d24f6b0ae9      0t0  TCP *:5556 <span class="o">(</span>LISTEN<span class="o">)</span>
+node      <span class="m">12307</span> nithinmk   13u  IPv6 0xff0ce6d24f6af269      0t0  TCP *:5557 <span class="o">(</span>LISTEN<span class="o">)</span>
+Kite      <span class="m">54597</span> nithinmk    9u  IPv4 0xff0ce6d256ad62d9      0t0  TCP localhost:46624 <span class="o">(</span>LISTEN<span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -57,11 +59,11 @@ Kite      54597 nithinmk    9u  IPv4 0xff0ce6d256ad62d9      0t0  TCP localhost:
 <h2>How to see the processor core usage<a class="headerlink" href="#how-to-see-the-processor-core-usage" title="Permalink to this headline">¶</a></h2>
 <p>To get all details regarding the processor core usage and other processing details,
 please use the below command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ htop
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ htop
 </pre></div>
 </div>
-<p>** you need to install this utility in mac , using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ brew install htop
+<p>this utility is not pre installed in mac, so you need to install that using</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ brew install htop
 </pre></div>
 </div>
 </div>
