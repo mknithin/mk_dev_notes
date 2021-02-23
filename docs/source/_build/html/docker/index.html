@@ -97,8 +97,8 @@ When I checked that in the doc I understood that remote container extension prov
 <div><p><a class="reference external" href="https://www.peterbe.com/plog/no-space-left-on-device-on-osx-docker">https://www.peterbe.com/plog/no-space-left-on-device-on-osx-docker</a></p>
 </div></blockquote>
 <p>and this is the command used here to do that</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">container</span> <span class="n">prune</span>
-<span class="n">docker</span> <span class="n">image</span> <span class="n">prune</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker container prune
+docker image prune
 </pre></div>
 </div>
 </div>
@@ -106,7 +106,7 @@ When I checked that in the doc I understood that remote container extension prov
 <h2>To refer source host in docker container<a class="headerlink" href="#to-refer-source-host-in-docker-container" title="Permalink to this headline">¶</a></h2>
 <p>when you want to refer the source host(your laptop or the server you’re running the docker), from a  docker container
 use the host name</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">internal</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>host.docker.internal
 </pre></div>
 </div>
 </div>

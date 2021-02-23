@@ -94,7 +94,7 @@ I followed this page
 
 and this is the command used here to do that 
 
-.. code-block::
+.. code-block:: shell
 
     docker container prune
     docker image prune
@@ -106,8 +106,8 @@ To refer source host in docker container
 when you want to refer the source host(your laptop or the server you're running the docker), from a  docker container
 use the host name
 
-.. code-block::
-
+.. code-block:: shell
+    
     host.docker.internal
 
 
