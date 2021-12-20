@@ -45,14 +45,36 @@
 <p>Git sub module is option to include a project repo inside another for various reasons.</p>
 <p>When such a repository have more than one submodules and the git username and email is not configured globally</p>
 <p>then there is a chance that you’ll come across this issue</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>remote: HTTP Basic: Access denied
+fatal: Authentication failed <span class="k">for</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher.git/&#39;</span>
+fatal: clone of <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher&#39;</span> into submodule path <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span> failed
+Failed to clone <span class="s1">&#39;message_dispatcher&#39;</span>. Retry scheduled
+Username <span class="k">for</span> <span class="s1">&#39;https://gitlab.com&#39;</span>: Password <span class="k">for</span> <span class="s1">&#39;https://gitlab.com&#39;</span>:
+Cloning into <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span>...
+remote: HTTP Basic: Access denied
+fatal: Authentication failed <span class="k">for</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher.git/&#39;</span>
+fatal: clone of <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher&#39;</span> into submodule path <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span> failed
+Failed to clone <span class="s1">&#39;message_dispatcher&#39;</span> a second time, aborting
+</pre></div>
+</div>
 <p>Solution is to configure global git username and email , just by doing</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;your username&quot;</span>
+git config --global user.password <span class="s2">&quot;your password&quot;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="add-a-submodule-to-existing-repo">
 <h2>Add a submodule  to existing repo<a class="headerlink" href="#add-a-submodule-to-existing-repo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git submodule add https://github.com/chaconinc/DbConnector
+</pre></div>
+</div>
 <p>once the submodule is added the repo will be downloaded to the current directory</p>
 </div>
 <div class="section" id="cloning-a-project-with-submodules">
 <h2>Cloning a Project with Submodules<a class="headerlink" href="#cloning-a-project-with-submodules" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/chaconinc/MainProject
+</pre></div>
+</div>
 </div>
 <div class="section" id="working-on-a-project-with-submodules">
 <h2>Working on a Project with Submodules<a class="headerlink" href="#working-on-a-project-with-submodules" title="Permalink to this headline">¶</a></h2>
@@ -60,16 +82,91 @@
 <h3>Pulling in Upstream Changes from the Submodule Remote<a class="headerlink" href="#pulling-in-upstream-changes-from-the-submodule-remote" title="Permalink to this headline">¶</a></h3>
 <p>The simplest model of using submodules in a project would be if you were simply consuming a subproject and wanted to get updates from it from time to time but were not actually modifying anything in your checkout.</p>
 <p>If you want to check for new work in a submodule, you can go into the directory and run git fetch and git merge the upstream branch to update the local code.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span> &gt; git fetch
+
+ From https://github.com/chaconinc/DbConnector
+c3f01dc..d0354fc  master     -&gt; origin/master
+
+ &gt; git merge origin/master
+
+ Updating c3f01dc..d0354fc
+ Fast-forward
+ scripts/connect.sh <span class="p">|</span> <span class="m">1</span> +
+ src/db.c           <span class="p">|</span> <span class="m">1</span> +
+ <span class="m">2</span> files changed, <span class="m">2</span> insertions<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
 <p>There is an easier way to do this as well, if you prefer to not manually fetch and merge in the subdirectory.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt; git submodule update --remote DbConnector
+
+remote: Counting objects: <span class="m">4</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">4</span> <span class="o">(</span>delta <span class="m">2</span><span class="o">)</span>, reused <span class="m">4</span> <span class="o">(</span>delta <span class="m">2</span><span class="o">)</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>, <span class="k">done</span>.
+From https://github.com/chaconinc/DbConnector
+3f19983..d0354fc  master     -&gt; origin/master
+Submodule path <span class="s1">&#39;DbConnector&#39;</span>: checked out <span class="s1">&#39;d0354fc054692d3906c85c3af05ddce39a1c0644&#39;</span>
+</pre></div>
+</div>
 <p>If you set the configuration setting status.submodulesummary, Git will also show you a short summary of changes to your submodules:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt; git config status.submodulesummary <span class="m">1</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="pulling-upstream-changes-from-the-project-remote">
 <h3>Pulling Upstream Changes from the Project Remote<a class="headerlink" href="#pulling-upstream-changes-from-the-project-remote" title="Permalink to this headline">¶</a></h3>
 <p>Simply executing git pull to get your newly committed changes is not enough:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt; $ git pull
+
+From https://github.com/chaconinc/MainProject
+fb9093c..0a24cfc  master     -&gt; origin/master
+Fetching submodule DbConnector
+From https://github.com/chaconinc/DbConnector
+c3f01dc..c87d55d  stable     -&gt; origin/stable
+Updating fb9093c..0a24cfc
+Fast-forward
+.gitmodules         <span class="p">|</span> <span class="m">2</span> +-
+DbConnector         <span class="p">|</span> <span class="m">2</span> +-
+<span class="m">2</span> files changed, <span class="m">2</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">2</span> deletions<span class="o">(</span>-<span class="o">)</span>
+
+&gt; git status
+
+On branch master
+Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
+Changes not staged <span class="k">for</span> commit:
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+
+    modified:   DbConnector <span class="o">(</span>new commits<span class="o">)</span>
+
+Submodules changed but not updated:
+
+* DbConnector c87d55d...c3f01dc <span class="o">(</span><span class="m">4</span><span class="o">)</span>:
+&lt; catch non-null terminated lines
+&lt; more robust error handling
+&lt; more efficient db routine
+&lt; better connection routine
+
+no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
 <p>By default, the git pull command recursively fetches submodules changes, as we can see in the output of the first command above. However, it does not update the submodules.</p>
 <p>To finalize the update, you need to run git submodule update:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git submodule update --init --recursive
+
+Submodule path <span class="s1">&#39;vendor/plugins/demo&#39;</span>: checked out <span class="s1">&#39;48679c6302815f6c76f1fe30625d795d9e55fc56&#39;</span>
+
+$ git status
+
+On branch master
+Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
+nothing to commit, working tree clean
+</pre></div>
+</div>
 <p>easy way to do this, in one step</p>
-<p>changes</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git pull --recurse-submodules
+</pre></div>
+</div>
 </div>
 </div>
 </div>

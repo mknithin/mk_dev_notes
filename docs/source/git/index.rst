@@ -19,7 +19,7 @@ When such a repository have more than one submodules and the git username and em
 
 then there is a chance that you'll come across this issue 
 
-.. code-block::bash
+.. code-block:: shell
 
     remote: HTTP Basic: Access denied
     fatal: Authentication failed for 'https://gitlab.com/d7networks/message_dispatcher.git/'
@@ -34,7 +34,7 @@ then there is a chance that you'll come across this issue
 
 Solution is to configure global git username and email , just by doing
 
-.. code-block::bash
+.. code-block:: shell
 
     git config --global user.name "your username"
     git config --global user.password "your password"
@@ -44,7 +44,7 @@ Add a submodule  to existing repo
 **********************************
 
 
-.. code-block::bash
+.. code-block:: shell
 
     git submodule add https://github.com/chaconinc/DbConnector
 
@@ -56,7 +56,7 @@ Cloning a Project with Submodules
 **********************************
 
 
-.. code-block::bash
+.. code-block:: shell
     
     git clone --recurse-submodules https://github.com/chaconinc/MainProject
 
@@ -74,7 +74,7 @@ The simplest model of using submodules in a project would be if you were simply 
 If you want to check for new work in a submodule, you can go into the directory and run git fetch and git merge the upstream branch to update the local code.
 
 
-.. code-block::bash
+.. code-block:: shell
     
     > git fetch
 
@@ -92,7 +92,7 @@ If you want to check for new work in a submodule, you can go into the directory 
 
 There is an easier way to do this as well, if you prefer to not manually fetch and merge in the subdirectory.
 
-.. code-block::bash
+.. code-block:: shell
     
     > git submodule update --remote DbConnector
     
@@ -108,7 +108,7 @@ There is an easier way to do this as well, if you prefer to not manually fetch a
 If you set the configuration setting status.submodulesummary, Git will also show you a short summary of changes to your submodules:
 
 
-.. code-block::bash
+.. code-block:: shell
     
     > git config status.submodulesummary 1
 
@@ -120,7 +120,7 @@ Pulling Upstream Changes from the Project Remote
 
 Simply executing git pull to get your newly committed changes is not enough:
 
-.. code-block::bash
+.. code-block:: shell
     
     > $ git pull
 
@@ -161,7 +161,7 @@ By default, the git pull command recursively fetches submodules changes, as we c
 To finalize the update, you need to run git submodule update:
 
 
-.. code-block::bash
+.. code-block:: shell
     
     $ git submodule update --init --recursive
     
@@ -176,9 +176,7 @@ To finalize the update, you need to run git submodule update:
 
 easy way to do this, in one step
 
-.. code-block::bash
+.. code-block:: shell
     
     $ git pull --recurse-submodules
 
-
-changes 
