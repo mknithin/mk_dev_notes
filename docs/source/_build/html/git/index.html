@@ -45,36 +45,14 @@
 <p>Git sub module is option to include a project repo inside another for various reasons.</p>
 <p>When such a repository have more than one submodules and the git username and email is not configured globally</p>
 <p>then there is a chance that you’ll come across this issue</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remote</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">Basic</span><span class="p">:</span> <span class="n">Access</span> <span class="n">denied</span>
-<span class="n">fatal</span><span class="p">:</span> <span class="n">Authentication</span> <span class="n">failed</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher.git/&#39;</span>
-<span class="n">fatal</span><span class="p">:</span> <span class="n">clone</span> <span class="n">of</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher&#39;</span> <span class="n">into</span> <span class="n">submodule</span> <span class="n">path</span> <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span> <span class="n">failed</span>
-<span class="n">Failed</span> <span class="n">to</span> <span class="n">clone</span> <span class="s1">&#39;message_dispatcher&#39;</span><span class="o">.</span> <span class="n">Retry</span> <span class="n">scheduled</span>
-<span class="n">Username</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com&#39;</span><span class="p">:</span> <span class="n">Password</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com&#39;</span><span class="p">:</span>
-<span class="n">Cloning</span> <span class="n">into</span> <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span><span class="o">...</span>
-<span class="n">remote</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">Basic</span><span class="p">:</span> <span class="n">Access</span> <span class="n">denied</span>
-<span class="n">fatal</span><span class="p">:</span> <span class="n">Authentication</span> <span class="n">failed</span> <span class="k">for</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher.git/&#39;</span>
-<span class="n">fatal</span><span class="p">:</span> <span class="n">clone</span> <span class="n">of</span> <span class="s1">&#39;https://gitlab.com/d7networks/message_dispatcher&#39;</span> <span class="n">into</span> <span class="n">submodule</span> <span class="n">path</span> <span class="s1">&#39;/tmp/direct7-platform/message_dispatcher&#39;</span> <span class="n">failed</span>
-<span class="n">Failed</span> <span class="n">to</span> <span class="n">clone</span> <span class="s1">&#39;message_dispatcher&#39;</span> <span class="n">a</span> <span class="n">second</span> <span class="n">time</span><span class="p">,</span> <span class="n">aborting</span>
-</pre></div>
-</div>
 <p>Solution is to configure global git username and email , just by doing</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;your username&quot;</span>
-<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">password</span> <span class="s2">&quot;your password&quot;</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="add-a-submodule-to-existing-repo">
 <h2>Add a submodule  to existing repo<a class="headerlink" href="#add-a-submodule-to-existing-repo" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chaconinc</span><span class="o">/</span><span class="n">DbConnector</span>
-</pre></div>
-</div>
 <p>once the submodule is added the repo will be downloaded to the current directory</p>
 </div>
 <div class="section" id="cloning-a-project-with-submodules">
 <h2>Cloning a Project with Submodules<a class="headerlink" href="#cloning-a-project-with-submodules" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chaconinc</span><span class="o">/</span><span class="n">MainProject</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="working-on-a-project-with-submodules">
 <h2>Working on a Project with Submodules<a class="headerlink" href="#working-on-a-project-with-submodules" title="Permalink to this headline">¶</a></h2>
@@ -82,91 +60,15 @@
 <h3>Pulling in Upstream Changes from the Submodule Remote<a class="headerlink" href="#pulling-in-upstream-changes-from-the-submodule-remote" title="Permalink to this headline">¶</a></h3>
 <p>The simplest model of using submodules in a project would be if you were simply consuming a subproject and wanted to get updates from it from time to time but were not actually modifying anything in your checkout.</p>
 <p>If you want to check for new work in a submodule, you can go into the directory and run git fetch and git merge the upstream branch to update the local code.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span> <span class="n">git</span> <span class="n">fetch</span>
-
- <span class="n">From</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chaconinc</span><span class="o">/</span><span class="n">DbConnector</span>
-<span class="n">c3f01dc</span><span class="o">..</span><span class="n">d0354fc</span>  <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
-
- <span class="o">&gt;</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
-
- <span class="n">Updating</span> <span class="n">c3f01dc</span><span class="o">..</span><span class="n">d0354fc</span>
- <span class="n">Fast</span><span class="o">-</span><span class="n">forward</span>
- <span class="n">scripts</span><span class="o">/</span><span class="n">connect</span><span class="o">.</span><span class="n">sh</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">+</span>
- <span class="n">src</span><span class="o">/</span><span class="n">db</span><span class="o">.</span><span class="n">c</span>           <span class="o">|</span> <span class="mi">1</span> <span class="o">+</span>
- <span class="mi">2</span> <span class="n">files</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">2</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>There is an easier way to do this as well, if you prefer to not manually fetch and merge in the subdirectory.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">remote</span> <span class="n">DbConnector</span>
-
-<span class="n">remote</span><span class="p">:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
-<span class="n">remote</span><span class="p">:</span> <span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
-<span class="n">remote</span><span class="p">:</span> <span class="n">Total</span> <span class="mi">4</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">4</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">Unpacking</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
-<span class="n">From</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chaconinc</span><span class="o">/</span><span class="n">DbConnector</span>
-<span class="mi">3</span><span class="n">f19983</span><span class="o">..</span><span class="n">d0354fc</span>  <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
-<span class="n">Submodule</span> <span class="n">path</span> <span class="s1">&#39;DbConnector&#39;</span><span class="p">:</span> <span class="n">checked</span> <span class="n">out</span> <span class="s1">&#39;d0354fc054692d3906c85c3af05ddce39a1c0644&#39;</span>
-</pre></div>
-</div>
 <p>If you set the configuration setting status.submodulesummary, Git will also show you a short summary of changes to your submodules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">git</span> <span class="n">config</span> <span class="n">status</span><span class="o">.</span><span class="n">submodulesummary</span> <span class="mi">1</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="pulling-upstream-changes-from-the-project-remote">
 <h3>Pulling Upstream Changes from the Project Remote<a class="headerlink" href="#pulling-upstream-changes-from-the-project-remote" title="Permalink to this headline">¶</a></h3>
 <p>Simply executing git pull to get your newly committed changes is not enough:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; $ git pull
-
-From https://github.com/chaconinc/MainProject
-fb9093c..0a24cfc  master     -&gt; origin/master
-Fetching submodule DbConnector
-From https://github.com/chaconinc/DbConnector
-c3f01dc..c87d55d  stable     -&gt; origin/stable
-Updating fb9093c..0a24cfc
-Fast-forward
-.gitmodules         | 2 +-
-DbConnector         | 2 +-
-2 files changed, 2 insertions(+), 2 deletions(-)
-
-&gt; git status
-
-On branch master
-Your branch is up-to-date with &#39;origin/master&#39;.
-Changes not staged for commit:
-(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-(use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
-
-    modified:   DbConnector (new commits)
-
-Submodules changed but not updated:
-
-* DbConnector c87d55d...c3f01dc (4):
-&lt; catch non-null terminated lines
-&lt; more robust error handling
-&lt; more efficient db routine
-&lt; better connection routine
-
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
-</pre></div>
-</div>
 <p>By default, the git pull command recursively fetches submodules changes, as we can see in the output of the first command above. However, it does not update the submodules.</p>
 <p>To finalize the update, you need to run git submodule update:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git submodule update --init --recursive
-
-Submodule path &#39;vendor/plugins/demo&#39;: checked out &#39;48679c6302815f6c76f1fe30625d795d9e55fc56&#39;
-
-$ git status
-
-On branch master
-Your branch is up-to-date with &#39;origin/master&#39;.
-nothing to commit, working tree clean
-</pre></div>
-</div>
 <p>easy way to do this, in one step</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git pull --recurse-submodules
-</pre></div>
-</div>
 </div>
 </div>
 </div>
