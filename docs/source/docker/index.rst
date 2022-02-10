@@ -112,4 +112,16 @@ use the host name
 
 
 
+Docker compose
+**************
+
+when changes in any docker file while running compose , always run
+
+.. code-block:: shell
+    
+   docker-compose up --build
+
+
+
+
 

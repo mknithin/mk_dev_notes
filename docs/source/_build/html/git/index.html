@@ -36,6 +36,15 @@
   <div class="section" id="git">
 <h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
 <p>Details about git VCS</p>
+<div class="section" id="delete-a-committed-file-from-git-repo">
+<h2>Delete a committed file from git repo<a class="headerlink" href="#delete-a-committed-file-from-git-repo" title="Permalink to this headline">¶</a></h2>
+<p>If you want to remove the file from the remote repo, first remove it from your project with –cache option and then push it:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git rm --cache /path/to/file
+git commit -am <span class="s2">&quot;Remove file&quot;</span>
+git push
+</pre></div>
+</div>
+</div>
 <div class="section" id="git-submodules-doc">
 <h2>Git Submodules doc<a class="headerlink" href="#git-submodules-doc" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">https://git-scm.com/book/en/v2/Git-Tools-Submodules</a></p>
@@ -193,6 +202,7 @@ nothing to commit, working tree clean
 <li class="toctree-l1"><a class="reference internal" href="../mac/index.html">Programming in Mac</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vscode/index.html">vscode editor</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Git</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#delete-a-committed-file-from-git-repo">Delete a committed file from git repo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#git-submodules-doc">Git Submodules doc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#git-submodule-authentication-issue">Git submodule authentication issue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-a-submodule-to-existing-repo">Add a submodule  to existing repo</a></li>

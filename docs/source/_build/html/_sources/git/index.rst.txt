@@ -4,6 +4,18 @@ Git
 
 Details about git VCS
 
+
+Delete a committed file from git repo
+*************************************
+
+If you want to remove the file from the remote repo, first remove it from your project with --cache option and then push it:
+
+.. code-block:: shell
+
+    git rm --cache /path/to/file
+    git commit -am "Remove file"
+    git push
+
 Git Submodules doc 
 *******************
 
